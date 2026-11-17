@@ -155,13 +155,14 @@ plt.show()
 # ==========================================
 # PLOT 2: DOSAGE ADJUSTMENT PLOT
 # ==========================================
+
 t, Asc, Cc = simulate(
        0.01, 0.006 ,21, 100, 24, 0.1
-    )
+    ) # predicts blood concentration over time for original dose of 21mg cavalitde
 
 t_adj, Asc_adj, Cc_adj = simulate(
         0.01, 0.006,28, 100, 24, 0.1
-    )
+    ) # predicts blood concentration over time for adjusted dose of 28mg cavalitde
 
 L2 = Ffree * Cc
 L2_adj = Ffree * Cc_adj
@@ -185,6 +186,8 @@ plt.plot(
         Fact_adj,
         label=f"Adjusted Cavalitide dose (28mg)"
     )
+
+plt.axhline(y=.9, label="Target (0.9)", linestyle='dotted')
 
 plt.xlabel("Time (days)")
 plt.ylabel("Active Fraction of GLP1R")
